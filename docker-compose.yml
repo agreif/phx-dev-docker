@@ -1,0 +1,23 @@
+services:
+  phx-dev-server:
+    image: agreif/phx-dev
+    container_name: phx-dev-app
+    hostname: phx-dev-app
+    ports:
+      - 4000:4000
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+  phx-dev-postgres:
+    image: postgres
+    container_name: phx-dev-postgres
+    hostname: phx-dev-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
