@@ -16,8 +16,4 @@ WORKDIR $APP_HOME
 
 EXPOSE 4000
 
-# RUN mix gettext.extract \
-#     && mix gettext.merge priv/gettext \
-#     && mix phx.server
-
 CMD ["mix", "phx.server"]

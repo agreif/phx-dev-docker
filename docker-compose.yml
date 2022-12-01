@@ -1,5 +1,5 @@
 services:
-  phx-dev-server:
+  phx-dev-app:
     image: agreif/phx-dev
     container_name: phx-dev-app
     hostname: phx-dev-app
