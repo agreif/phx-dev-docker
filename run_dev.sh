@@ -1,8 +1,7 @@
 echo "###### set env vars ############"
-ENV=dev
-POSTGRES_USER=phx_$ENV
-POSTGRES_PASSWORD=phx_$ENV
-POSTGRES_DATABASE=phx_$ENV
+POSTGRES_USER=phx_dev
+POSTGRES_PASSWORD=phx_dev
+POSTGRES_DATABASE=phx_dev
 DB_CONTAINER=phx-dev-postgres
 
 echo "###### start composer ############"
@@ -15,8 +14,10 @@ docker exec -ti $DB_CONTAINER psql -U postgres -c "CREATE USER $POSTGRES_USER WI
 echo "###### create postres database ############"
 docker exec -ti $DB_CONTAINER psql -U postgres -c "CREATE DATABASE $POSTGRES_DATABASE OWNER $POSTGRES_USER;"
 
-echo "###### ecto migrate ############"
+echo "###### mix migrate ############"
 docker exec -it phx-dev-app mix ecto.migrate
+
+echo "###### mix gettext ############"
 docker exec -it phx-dev-app mix gettext.extract
 docker exec -it phx-dev-app mix gettext.merge priv/gettext
 
