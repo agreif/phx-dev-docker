@@ -7,6 +7,7 @@ services:
       - 4000:4000
     volumes:
       - ./:/app
+      - emacs.d:/home/dev/.emacs.d
     depends_on:
       - db
   phx-dev-postgres:
@@ -21,3 +22,4 @@ services:
       - pgdata:/var/lib/postgresql/data
 volumes:
   pgdata:
+  emacs.d:
